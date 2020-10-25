@@ -19,10 +19,10 @@ public class Client {
         mediator.registerRenter(renter);
 
         // 求租者 发送求租消息
-        renter.sendMessage("在鱼化寨附近租套房子，价格1000元左右一个月");
+        renter.sendMessage("我想在鱼化寨附近租套房子，价格1200元左右一个月");
         System.out.println("--------------------------");
         // 房东A 发送房屋出租消息
-        landlordA.sendMessage("鱼化寨地铁A口有一房一厅出租  1200/月  光线好 近地铁站");
+        landlordA.sendMessage("我这鱼化寨地铁A口有一房一厅出租  1300/月  光线好 近地铁站，要不要了解一下");
     }
 
 }

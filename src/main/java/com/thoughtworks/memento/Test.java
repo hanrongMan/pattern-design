@@ -9,23 +9,23 @@ import java.util.Scanner;
  * 用户输入“:list”，程序在命令行中输出内存文本的内容；
  * 用户输入“:undo”，程序会撤销上一次输入的文本，也就是从内存文本中将上次输入的文本删除掉。
  */
-public class Test {
-  public static void main(String[] args) {
-    InputText inputText = new InputText();
-    MementoHolder snapshotsHolder = new MementoHolder();
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("请开始你的表演。。。");
-    while (scanner.hasNext()) {
-      String input = scanner.next();
-      if (input.equals(":list")) {
-        System.out.println(inputText.getText());
-      } else if (input.equals(":undo")) {
-        Memento memento = snapshotsHolder.popSnapshot();
-        inputText.restoreSnapshot(memento);
-      } else {
-        snapshotsHolder.pushSnapshot(inputText.createSnapshot());
-        inputText.append(input);
+  public class Test {
+    public static void main(String[] args) {
+      InputText inputText = new InputText();
+      MementoHolder snapshotsHolder = new MementoHolder();
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("请开始你的表演。。。[:list]表示列出全部内容[:undo]表示撤销");
+      while (scanner.hasNext()) {
+        String input = scanner.next();
+        if (input.equals(":list")) {
+          System.out.println(inputText.getText());
+        } else if (input.equals(":undo")) {
+          Memento memento = snapshotsHolder.popSnapshot();
+          inputText.restoreSnapshot(memento);
+        } else {
+          snapshotsHolder.pushSnapshot(inputText.createSnapshot());
+          inputText.append(input);
+        }
       }
     }
   }
-}
